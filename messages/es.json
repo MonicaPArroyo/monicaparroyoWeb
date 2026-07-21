@@ -6,6 +6,84 @@
 		"contact": "contacto",
 		"blog": "blog"
 	},
+	"hero": {
+		"greeting": "Hola, soy",
+		"name": "Mónica P. Arroyo",
+		"roleLead": "Frontend Developer",
+		"roleTail": "Next.js · TypeScript · React · PHP/Laravel",
+		"tagline": "Transformando líneas de código en oportunidades para el futuro ✨",
+		"ctaContact": "Contáctame",
+		"ctaWorks": "Ver proyectos",
+		"statusPrefix": "Actualmente en"
+	},
+	"projects": {
+		"heading": "proyectos",
+		"subheading": "Una selección de lo que he construido.",
+		"featured": "Destacados",
+		"small": "Proyectos pequeños & hobby",
+		"links": {
+			"live": "Live",
+			"github": "GitHub",
+			"figma": "Figma",
+			"demo": "Demo",
+			"itch": "itch.io",
+			"cached": "Cached",
+			"tinkercad": "Tinkercad"
+		},
+		"items": {
+			"astroletras": "Catálogo de libros con búsqueda y estado global.",
+			"crystalgems": "Catálogo de personajes de Steven Universe.",
+			"contactapp": "CRUD fullstack de contactos con validación de formularios.",
+			"calaverita": "Librería de Arduino: mide distancia y mueve una quijada con sonido y luces.",
+			"snowball": "Endless-runner publicado en itch.io."
+		}
+	},
+	"skills": {
+		"heading": "skills",
+		"subheading": "Mi caja de herramientas.",
+		"categories": {
+			"languages": "Lenguajes",
+			"frameworks": "Frameworks",
+			"tools": "Herramientas",
+			"databases": "Bases de datos",
+			"other": "Otros"
+		}
+	},
+	"about": {
+		"heading": "sobre-mí",
+		"subheading": "Un poco de mí.",
+		"p1": "¡Hola! Soy Mónica. Desarrolladora fullstack con más de 4 años creando soluciones web modernas. Mi fuerte es el ecosistema de React —Next.js y TypeScript—, pero me muevo con soltura en el backend con Laravel, así que entiendo el producto de punta a punta.",
+		"p2": "Me apasiona convertir procesos manuales en herramientas digitales eficientes. Antes de ser dev fui educadora STEAM, y de ahí traigo la comunicación clara, el trabajo en equipo y la resolución creativa de problemas. Siempre busco aportar valor más allá del código.",
+		"funFactsTitle": "Fun facts",
+		"funFacts": [
+			"Me encanta la electrónica y jugar con Arduino 🔌",
+			"Ex-educadora STEAM 👩‍🏫",
+			"El azul del sitio es un guiño a la TARDIS 💙",
+			"Disfruto resolver rompecabezas 🧩"
+		],
+		"location": "Área metropolitana de Puebla, MX"
+	},
+	"contact": {
+		"heading": "contacto",
+		"subheading": "¿Trabajamos juntas?",
+		"availability": "Estoy abierta a oportunidades freelance y colaboraciones. Si tienes un proyecto en mente o solo quieres saludar, escríbeme.",
+		"directTitle": "También me encuentras aquí",
+		"location": "Área metropolitana de Puebla, MX",
+		"form": {
+			"name": "Nombre",
+			"namePlaceholder": "Tu nombre",
+			"email": "Email",
+			"title": "Asunto",
+			"titlePlaceholder": "¿De qué se trata?",
+			"message": "Mensaje",
+			"messagePlaceholder": "Cuéntame...",
+			"send": "Enviar",
+			"sending": "Enviando...",
+			"success": "¡Gracias! Te responderé pronto.",
+			"error": "Algo salió mal. Intenta de nuevo.",
+			"invalidEmail": "Ingresa un correo válido."
+		}
+	},
 	"footer": {
 		"tagline": "Transformando líneas de código en oportunidades para el futuro ✨",
 		"social": "Redes",

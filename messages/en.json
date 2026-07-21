@@ -6,6 +6,84 @@
 		"contact": "contact",
 		"blog": "blog"
 	},
+	"hero": {
+		"greeting": "Hi, I'm",
+		"name": "Mónica P. Arroyo",
+		"roleLead": "Frontend Developer",
+		"roleTail": "Next.js · TypeScript · React · PHP/Laravel",
+		"tagline": "Turning lines of code into opportunities for the future ✨",
+		"ctaContact": "Contact me",
+		"ctaWorks": "View projects",
+		"statusPrefix": "Currently at"
+	},
+	"projects": {
+		"heading": "works",
+		"subheading": "A selection of things I've built.",
+		"featured": "Featured",
+		"small": "Small & hobby projects",
+		"links": {
+			"live": "Live",
+			"github": "GitHub",
+			"figma": "Figma",
+			"demo": "Demo",
+			"itch": "itch.io",
+			"cached": "Cached",
+			"tinkercad": "Tinkercad"
+		},
+		"items": {
+			"astroletras": "Book catalog with search and global state.",
+			"crystalgems": "Steven Universe character catalog.",
+			"contactapp": "Full-stack contacts CRUD with form validation.",
+			"calaverita": "Arduino library: senses distance and moves a jaw with sound and lights.",
+			"snowball": "Endless-runner published on itch.io."
+		}
+	},
+	"skills": {
+		"heading": "skills",
+		"subheading": "My toolbox.",
+		"categories": {
+			"languages": "Languages",
+			"frameworks": "Frameworks",
+			"tools": "Tools",
+			"databases": "Databases",
+			"other": "Other"
+		}
+	},
+	"about": {
+		"heading": "about",
+		"subheading": "A bit about me.",
+		"p1": "Hi! I'm Mónica. A full-stack developer with 4+ years building modern web solutions. My strength is the React ecosystem —Next.js and TypeScript— but I move comfortably across the backend with Laravel, so I understand the product end to end.",
+		"p2": "I love turning manual processes into efficient digital tools. Before becoming a dev I was a STEAM educator, which gave me clear communication, teamwork and creative problem-solving. I always look to add value beyond the code.",
+		"funFactsTitle": "Fun facts",
+		"funFacts": [
+			"I love electronics and tinkering with Arduino 🔌",
+			"Former STEAM educator 👩‍🏫",
+			"The site's blue is a nod to the TARDIS 💙",
+			"I enjoy solving puzzles 🧩"
+		],
+		"location": "Puebla metro area, MX"
+	},
+	"contact": {
+		"heading": "contact",
+		"subheading": "Let's work together?",
+		"availability": "I'm open to freelance opportunities and collaborations. If you have a project in mind or just want to say hi, drop me a line.",
+		"directTitle": "You can also find me here",
+		"location": "Puebla metro area, MX",
+		"form": {
+			"name": "Name",
+			"namePlaceholder": "Your name",
+			"email": "Email",
+			"title": "Subject",
+			"titlePlaceholder": "What's it about?",
+			"message": "Message",
+			"messagePlaceholder": "Tell me...",
+			"send": "Send",
+			"sending": "Sending...",
+			"success": "Thanks! I'll get back to you soon.",
+			"error": "Something went wrong. Please try again.",
+			"invalidEmail": "Please enter a valid email."
+		}
+	},
 	"footer": {
 		"tagline": "Turning lines of code into opportunities for the future ✨",
 		"social": "Social",
