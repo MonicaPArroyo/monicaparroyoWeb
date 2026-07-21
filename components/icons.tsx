@@ -46,6 +46,15 @@ export function CloseIcon(props: IconProps) {
 	);
 }
 
+export function MailIcon(props: IconProps) {
+	return (
+		<svg {...base} {...props} aria-hidden="true">
+			<rect x="3" y="5" width="18" height="14" rx="2" />
+			<path d="m3 7 9 6 9-6" />
+		</svg>
+	);
+}
+
 export function ArrowUpRightIcon(props: IconProps) {
 	return (
 		<svg {...base} {...props} aria-hidden="true">

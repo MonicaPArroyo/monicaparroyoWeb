@@ -16,7 +16,7 @@ export type SocialLink = {
 
 export const siteConfig = {
 	name: 'Mónica P. Arroyo',
-	email: 'monica.arroyo@hirint.io',
+	email: 'monicaparroyo7@gmail.com',
 	navItems: [
 		{ key: 'home', href: '#home' },
 		{ key: 'works', href: '#works' },
