@@ -1,0 +1,79 @@
+/* Tailwind CSS v4 — must be first */
+@import "tailwindcss";
+/* HeroUI v3 styles — must come after Tailwind */
+@import "@heroui/styles";
+
+/* Enable class-based dark variant (next-themes sets class="dark") */
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+	/* Fonts wired from next/font CSS variables (see app/layout.tsx) */
+	--font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+	--font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", monospace;
+}
+
+/* Expose the custom brand token --nova as Tailwind utilities.
+   `inline` makes bg-nova / text-nova / text-nova-foreground resolve the runtime
+   CSS variable, so they follow the active theme like HeroUI's own tokens. */
+@theme inline {
+	--color-nova: var(--nova);
+	--color-nova-foreground: var(--nova-foreground);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Brand palette — "Azul TARDIS"
+   OKLCH values converted from the brand hex and WCAG-AA validated.
+   Only brand tokens are overridden; success/warning/danger and the
+   derived *-hover / *-soft tokens keep HeroUI's defaults.
+   ───────────────────────────────────────────────────────────── */
+:root,
+[data-theme="light"] {
+	--accent: oklch(0.3428 0.0705 252.44); /* #1B3A5C  TARDIS blue */
+	--accent-foreground: oklch(0.9772 0.0068 247.89); /* #F4F8FC */
+	--background: oklch(0.9772 0.0068 247.89); /* #F4F8FC */
+	--surface: oklch(1 0 0); /* #FFFFFF */
+	--surface-foreground: oklch(0.2556 0.045 252.25); /* #122438 */
+	--foreground: oklch(0.2556 0.045 252.25); /* #122438 */
+	--nova: oklch(0.8062 0.1358 84.74); /* #E8B84B  nova gold */
+	--nova-foreground: oklch(0.1937 0.033 91.7); /* #1A1403 */
+}
+
+.dark,
+[data-theme="dark"] {
+	--accent: oklch(0.6727 0.1086 248.97); /* #5E9BD6  brightened so text + buttons pass AA */
+	--accent-foreground: oklch(0.2358 0.0451 253.61); /* #0E1F33  deep navy text on accent */
+	--background: oklch(0.2358 0.0451 253.61); /* #0E1F33  deep TARDIS navy (not pure black) */
+	--surface: oklch(0.2736 0.0492 255.17); /* #16283F */
+	--surface-foreground: oklch(0.9544 0.0138 247.97); /* #E9F1F9 */
+	--foreground: oklch(0.9544 0.0138 247.97); /* #E9F1F9 */
+	--nova: oklch(0.8062 0.1358 84.74); /* #E8B84B */
+	--nova-foreground: oklch(0.1937 0.033 91.7); /* #1A1403 */
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+		/* offset anchor targets for the sticky navbar */
+		scroll-padding-top: 5rem;
+	}
+}
+
+/* Discreet twinkle for the logo's nova star (navbar). */
+@keyframes nova-twinkle {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.5;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	::before,
+	::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+	}
+}
