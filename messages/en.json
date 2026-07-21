@@ -1,0 +1,14 @@
+{
+	"nav": {
+		"home": "home",
+		"works": "works",
+		"about": "about",
+		"contact": "contact",
+		"blog": "blog"
+	},
+	"footer": {
+		"tagline": "Turning lines of code into opportunities for the future ✨",
+		"social": "Social",
+		"rights": "All rights reserved."
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"nav": {
+		"home": "inicio",
+		"works": "proyectos",
+		"about": "sobre-mí",
+		"contact": "contacto",
+		"blog": "blog"
+	},
+	"footer": {
+		"tagline": "Transformando líneas de código en oportunidades para el futuro ✨",
+		"social": "Redes",
+		"rights": "Todos los derechos reservados."
+	}
+}
