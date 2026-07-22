@@ -1,4 +1,8 @@
 {
+	"metadata": {
+		"title": "Mónica P. Arroyo | Frontend Developer",
+		"description": "Frontend Developer especializada en Next.js, TypeScript, React y PHP/Laravel. Portafolio, proyectos y blog."
+	},
 	"nav": {
 		"home": "inicio",
 		"works": "proyectos",
