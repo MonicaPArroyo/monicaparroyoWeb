@@ -84,6 +84,16 @@
 			"invalidEmail": "Ingresa un correo válido."
 		}
 	},
+	"blog": {
+		"heading": "blog",
+		"subheading": "Notas, aprendizajes y experimentos.",
+		"empty": "Aún no hay publicaciones. ¡Muy pronto!",
+		"readMore": "Leer más",
+		"publishedOn": "Publicado el",
+		"backToBlog": "Volver al blog",
+		"breadcrumbHome": "inicio",
+		"breadcrumbBlog": "blog"
+	},
 	"footer": {
 		"tagline": "Transformando líneas de código en oportunidades para el futuro ✨",
 		"social": "Redes",
