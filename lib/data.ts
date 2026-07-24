@@ -24,8 +24,14 @@ export type Project = {
 	tech: string[];
 	links: ProjectLink[];
 	featured: boolean;
-	/** cover accent tint. */
+	/** cover accent tint (used behind the placeholder / letterboxing). */
 	tint: 'accent' | 'nova';
+	/** cover image under /public, e.g. '/projects/contactapp.png'. Falls back to
+	 *  the logo placeholder when absent. Cropped with object-cover so the card
+	 *  keeps a fixed height. */
+	cover?: string;
+	/** object-position for the cover crop (Tailwind class, e.g. 'object-top'). */
+	coverPosition?: string;
 	/** optional co-author, shown as a small credit link on the card. */
 	collaborator?: { name: string; href: string };
 };
@@ -41,6 +47,8 @@ export const projects: Project[] = [
 		],
 		featured: true,
 		tint: 'nova',
+		cover: '/projects/weddinghub.png',
+		coverPosition: 'object-top',
 		collaborator: { name: 'David', href: 'https://github.com/DavidNegreteL' },
 	},
 	{
@@ -54,6 +62,8 @@ export const projects: Project[] = [
 		],
 		featured: true,
 		tint: 'accent',
+		cover: '/projects/astroletras.png',
+		coverPosition: 'object-top',
 	},
 	{
 		key: 'crystalgems',
@@ -65,6 +75,8 @@ export const projects: Project[] = [
 		],
 		featured: true,
 		tint: 'nova',
+		cover: '/projects/crystalgems.png',
+		coverPosition: 'object-top',
 	},
 	{
 		key: 'contactapp',
@@ -76,6 +88,7 @@ export const projects: Project[] = [
 		],
 		featured: true,
 		tint: 'accent',
+		cover: '/projects/contactapp.png',
 	},
 	{
 		key: 'calaverita',

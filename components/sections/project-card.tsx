@@ -1,5 +1,6 @@
 import { clsx } from 'clsx';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { LinkButton, outlineButtonSmClass } from '@/components/link-button';
 import { Logo } from '@/components/logo';
 import { Link } from '@/i18n/navigation';
@@ -100,17 +101,29 @@ export function ProjectCard({
 
 	return (
 		<div className="flex h-full flex-col border border-separator transition-colors hover:border-accent/60">
-			{/* cover placeholder — real cover images added later */}
+			{/* fixed-height cover — real screenshot (cropped) or logo placeholder */}
 			<div
 				className={clsx(
 					'relative flex h-36 items-center justify-center overflow-hidden',
 					project.tint === 'nova' ? 'bg-nova/10' : 'bg-accent/10',
 				)}
 			>
-				<Logo size={40} />
-				<span className="absolute bottom-2 right-3 max-w-[80%] truncate text-[11px] text-muted">
-					{project.name}
-				</span>
+				{project.cover ? (
+					<Image
+						src={project.cover}
+						alt={project.name}
+						fill
+						sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+						className={clsx('object-cover', project.coverPosition)}
+					/>
+				) : (
+					<>
+						<Logo size={40} />
+						<span className="absolute bottom-2 right-3 max-w-[80%] truncate text-[11px] text-muted">
+							{project.name}
+						</span>
+					</>
+				)}
 			</div>
 			<div className="border-y border-separator px-4 py-2 text-xs text-muted">
 				{stack}
