@@ -15,16 +15,16 @@ export function Projects() {
 			</h3>
 			<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 				{featured.map((project) => (
-					<ProjectCard key={project.key} project={project} />
+					<ProjectCard key={project.key} project={project} variant="featured" />
 				))}
 			</div>
 
-			<h3 className="mb-5 mt-14 font-mono text-sm font-semibold uppercase tracking-wider text-muted">
+			<h3 className="mb-5 mt-14 text-sm font-semibold uppercase tracking-wider text-muted">
 				{t('small')}
 			</h3>
 			<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 				{small.map((project) => (
-					<ProjectCard key={project.key} project={project} />
+					<ProjectCard key={project.key} project={project} variant="small" />
 				))}
 			</div>
 		</Section>
