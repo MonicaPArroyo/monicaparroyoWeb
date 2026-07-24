@@ -34,7 +34,8 @@
 			"demo": "Demo",
 			"itch": "itch.io",
 			"cached": "Cached",
-			"tinkercad": "Tinkercad"
+			"tinkercad": "Tinkercad",
+			"blog": "Blog"
 		},
 		"items": {
 			"weddinghub": "App de RSVP para bodas: gestión de invitados, confirmaciones y cuenta regresiva, con autenticación y panel de administración.",
@@ -42,6 +43,7 @@
 			"crystalgems": "Catálogo de personajes de Steven Universe.",
 			"contactapp": "CRUD fullstack de contactos con validación de formularios.",
 			"calaverita": "Librería de Arduino: mide distancia y mueve una quijada con sonido y luces.",
+			"decoder": "Circuito de lógica combinacional que convierte una entrada binaria (BCD) en el patrón de un display de 7 segmentos.",
 			"snowball": "Endless-runner publicado en itch.io."
 		}
 	},

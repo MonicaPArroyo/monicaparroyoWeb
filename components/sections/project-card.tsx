@@ -2,33 +2,45 @@ import { clsx } from 'clsx';
 import { useTranslations } from 'next-intl';
 import { LinkButton } from '@/components/link-button';
 import { Logo } from '@/components/logo';
+import { Link } from '@/i18n/navigation';
 import type { Project, ProjectLink } from '@/lib/data';
 
-const linkVariant: Record<ProjectLink['type'], 'primary' | 'outline' | 'nova'> = {
+const linkVariant: Record<ProjectLink['type'], 'primary' | 'outline'> = {
 	live: 'primary',
 	demo: 'primary',
-	itch: 'nova',
+	itch: 'outline',
 	github: 'outline',
 	figma: 'outline',
 	cached: 'outline',
 	tinkercad: 'outline',
+	blog: 'outline',
 };
+
+// Shared button chrome so the internal (locale-aware) blog Link matches LinkButton.
+const outlineBtn =
+	'inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-all border border-border text-foreground hover:border-accent hover:text-accent';
 
 function Actions({ project, t }: { project: Project; t: (k: string) => string }) {
 	if (project.links.length === 0) return null;
 	return (
 		<div className="mt-4 flex flex-wrap gap-2">
-			{project.links.map((link) => (
-				<LinkButton
-					key={link.type}
-					href={link.href}
-					size="sm"
-					variant={linkVariant[link.type]}
-					external
-				>
-					{t(`links.${link.type}`)}
-				</LinkButton>
-			))}
+			{project.links.map((link) =>
+				link.type === 'blog' ? (
+					<Link key={link.type} href={link.href} className={outlineBtn}>
+						{t(`links.${link.type}`)}
+					</Link>
+				) : (
+					<LinkButton
+						key={link.type}
+						href={link.href}
+						size="sm"
+						variant={linkVariant[link.type]}
+						external
+					>
+						{t(`links.${link.type}`)}
+					</LinkButton>
+				),
+			)}
 		</div>
 	);
 }

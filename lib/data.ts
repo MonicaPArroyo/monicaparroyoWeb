@@ -2,7 +2,16 @@
  *  proper nouns, tech tags and links live here. */
 
 export type ProjectLink = {
-	type: 'live' | 'github' | 'figma' | 'demo' | 'itch' | 'cached' | 'tinkercad';
+	type:
+		| 'live'
+		| 'github'
+		| 'figma'
+		| 'demo'
+		| 'itch'
+		| 'cached'
+		| 'tinkercad'
+		| 'blog';
+	/** external URL, or an internal (locale-aware) path for `blog`. */
 	href: string;
 };
 
@@ -81,6 +90,20 @@ export const projects: Project[] = [
 		],
 		featured: false,
 		tint: 'nova',
+	},
+	{
+		key: 'decoder',
+		name: 'Decodificador a 7 segmentos',
+		tech: ['Electrónica', 'Lógica digital', 'Tinkercad'],
+		links: [
+			{
+				type: 'tinkercad',
+				href: 'https://www.tinkercad.com/things/j96Q0IwrwoT-decodificador-binario-a-7-segmentos',
+			},
+			{ type: 'blog', href: '/blog/decodificador-binario-7-segmentos' },
+		],
+		featured: false,
+		tint: 'accent',
 	},
 	{
 		key: 'snowball',

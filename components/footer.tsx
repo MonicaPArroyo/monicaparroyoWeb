@@ -41,6 +41,7 @@ export function Footer() {
 						size="sm"
 						external
 						aria-label={t('support')}
+						className="self-start sm:self-end"
 					>
 						<SiBuymeacoffee className="size-4" />
 						{t('support')}
