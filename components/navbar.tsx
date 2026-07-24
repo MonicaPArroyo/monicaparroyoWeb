@@ -9,11 +9,14 @@ import { Logo } from '@/components/logo';
 import { SocialLinks } from '@/components/social-links';
 import { ThemeSwitch } from '@/components/theme-switch';
 import { siteConfig } from '@/config/site';
-import { Link as IntlLink } from '@/i18n/navigation';
+import { Link as IntlLink, usePathname } from '@/i18n/navigation';
 
 export function Navbar() {
 	const t = useTranslations('nav');
 	const [open, setOpen] = useState(false);
+	// Locale-aware pathname ('/' on home, '/blog' elsewhere). Hash anchors only
+	// resolve on the home page; from other routes they must jump to home + hash.
+	const onHome = usePathname() === '/';
 
 	// Close the drawer on Escape and lock body scroll while it's open.
 	useEffect(() => {
@@ -47,15 +50,24 @@ export function Navbar() {
 				{label}
 			</>
 		);
-		// Hash anchors stay on the current page; /blog is a locale-aware route.
-		return item.route ? (
-			<IntlLink href={item.href} className={cls} onClick={onClick}>
-				{inner}
-			</IntlLink>
-		) : (
+		// Real route (/blog): locale-aware Link.
+		if (item.route) {
+			return (
+				<IntlLink href={item.href} className={cls} onClick={onClick}>
+					{inner}
+				</IntlLink>
+			);
+		}
+		// Hash anchor: scroll in-page on home; from other routes, go home + hash
+		// (locale-aware) so the URL doesn't become e.g. /es/blog#experience.
+		return onHome ? (
 			<a href={item.href} className={cls} onClick={onClick}>
 				{inner}
 			</a>
+		) : (
+			<IntlLink href={`/${item.href}`} className={cls} onClick={onClick}>
+				{inner}
+			</IntlLink>
 		);
 	}
 
@@ -66,16 +78,29 @@ export function Navbar() {
 		<>
 		<header className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
 			<nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-6">
-				<a
-					href="#home"
-					className="flex items-center gap-2"
-					aria-label={siteConfig.name}
-				>
-					<Logo size={28} animated />
-					<span className="font-mono text-base font-semibold tracking-tight">
-						{siteConfig.name}
-					</span>
-				</a>
+				{onHome ? (
+					<a
+						href="#home"
+						className="flex items-center gap-2"
+						aria-label={siteConfig.name}
+					>
+						<Logo size={28} animated />
+						<span className="font-mono text-base font-semibold tracking-tight">
+							{siteConfig.name}
+						</span>
+					</a>
+				) : (
+					<IntlLink
+						href="/"
+						className="flex items-center gap-2"
+						aria-label={siteConfig.name}
+					>
+						<Logo size={28} animated />
+						<span className="font-mono text-base font-semibold tracking-tight">
+							{siteConfig.name}
+						</span>
+					</IntlLink>
+				)}
 
 				<ul className="hidden items-center gap-6 text-sm lg:flex">
 					{siteConfig.navItems.map((item) => (
