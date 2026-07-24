@@ -11,7 +11,7 @@ export function About() {
 		<Section id="about-me" title={t('heading')} subtitle={t('subheading')}>
 			<div className="grid gap-12 lg:grid-cols-2 lg:items-center">
 				{/* bio */}
-				<div className="max-w-xl space-y-4 text-pretty leading-relaxed text-foreground/90">
+				<div className="max-w-xl space-y-4 text-pretty leading-relaxed text-muted">
 					<p>{t('p1')}</p>
 					<p>{t('p2')}</p>
 					<p className="inline-flex items-center gap-2 pt-2 text-sm text-muted">

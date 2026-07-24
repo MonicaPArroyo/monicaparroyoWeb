@@ -79,7 +79,11 @@ export function ContactForm() {
 			</TextField>
 
 			<div className="flex items-center gap-3">
-				<Button type="submit" isDisabled={status === 'sending'}>
+				<Button
+					type="submit"
+					isDisabled={status === 'sending'}
+					className="bg-accent-solid text-accent-solid-foreground"
+				>
 					{status === 'sending' ? t('sending') : t('send')}
 				</Button>
 				{status === 'success' && (

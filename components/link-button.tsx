@@ -6,8 +6,9 @@ type Variant = 'primary' | 'outline' | 'nova' | 'ghost';
 type Size = 'sm' | 'md';
 
 const variantCls: Record<Variant, string> = {
-	primary: 'bg-accent text-accent-foreground hover:brightness-95',
-	nova: 'bg-nova text-nova-foreground hover:brightness-95',
+	primary:
+		'bg-accent-solid text-accent-solid-foreground hover:brightness-110',
+	nova: 'bg-nova text-nova-foreground hover:brightness-105',
 	outline:
 		'border border-border text-foreground hover:border-accent hover:text-accent',
 	ghost: 'text-foreground/80 hover:text-accent',
