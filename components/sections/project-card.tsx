@@ -5,14 +5,16 @@ import { Logo } from '@/components/logo';
 import { Link } from '@/i18n/navigation';
 import type { Project, ProjectLink } from '@/lib/data';
 
+// "Go interact with it" destinations (live / demo / itch / tinkercad) are the
+// primary action → solid blue. Source/reference links stay outline.
 const linkVariant: Record<ProjectLink['type'], 'primary' | 'outline'> = {
 	live: 'primary',
 	demo: 'primary',
-	itch: 'outline',
+	itch: 'primary',
+	tinkercad: 'primary',
 	github: 'outline',
 	figma: 'outline',
 	cached: 'outline',
-	tinkercad: 'outline',
 	blog: 'outline',
 };
 

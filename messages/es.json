@@ -44,7 +44,8 @@
 			"contactapp": "CRUD fullstack de contactos con validación de formularios.",
 			"calaverita": "Librería de Arduino: mide distancia y mueve una quijada con sonido y luces.",
 			"decoder": "Circuito de lógica combinacional que convierte una entrada binaria (BCD) en el patrón de un display de 7 segmentos.",
-			"snowball": "Endless-runner publicado en itch.io."
+			"snowball": "Endless-runner publicado en itch.io.",
+			"flanes": "Juego de navegador hecho con Phaser para 'Las flanes', mi grupo de amigas. Un proyecto muy querido."
 		}
 	},
 	"experience": {

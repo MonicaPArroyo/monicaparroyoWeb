@@ -82,11 +82,11 @@ export const projects: Project[] = [
 		name: 'Calaverita',
 		tech: ['Arduino', 'C++', 'Electrónica'],
 		links: [
-			{ type: 'github', href: 'https://github.com/MonicaPArroyo/Calaverita' },
 			{
 				type: 'tinkercad',
 				href: 'https://www.tinkercad.com/things/bpGrzxdJW10-calaveritah',
 			},
+			{ type: 'github', href: 'https://github.com/MonicaPArroyo/Calaverita' },
 		],
 		featured: false,
 		tint: 'nova',
@@ -96,11 +96,11 @@ export const projects: Project[] = [
 		name: 'Decodificador a 7 segmentos',
 		tech: ['Electrónica', 'Lógica digital', 'Tinkercad'],
 		links: [
-			{ type: 'blog', href: '/blog/decodificador-binario-7-segmentos' },
 			{
 				type: 'tinkercad',
 				href: 'https://www.tinkercad.com/things/j96Q0IwrwoT-decodificador-binario-a-7-segmentos',
 			},
+			{ type: 'blog', href: '/blog/decodificador-binario-7-segmentos' },
 		],
 		featured: false,
 		tint: 'accent',
@@ -114,6 +114,17 @@ export const projects: Project[] = [
 		],
 		featured: false,
 		tint: 'accent',
+	},
+	{
+		key: 'flanes',
+		name: 'Flanes: The Game',
+		tech: ['Phaser', 'JavaScript', 'HTML5'],
+		links: [
+			{ type: 'live', href: 'https://monicaparroyo.github.io/Flanes-The-Game/' },
+			{ type: 'github', href: 'https://github.com/MonicaPArroyo/Flanes-The-Game' },
+		],
+		featured: false,
+		tint: 'nova',
 	},
 ];
 

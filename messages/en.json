@@ -44,7 +44,8 @@
 			"contactapp": "Full-stack contacts CRUD with form validation.",
 			"calaverita": "Arduino library: senses distance and moves a jaw with sound and lights.",
 			"decoder": "Combinational logic circuit that turns a binary (BCD) input into the pattern for a 7-segment display.",
-			"snowball": "Endless-runner published on itch.io."
+			"snowball": "Endless-runner published on itch.io.",
+			"flanes": "Browser game built with Phaser for 'Las flanes', my group of friends. A project close to my heart."
 		}
 	},
 	"experience": {
