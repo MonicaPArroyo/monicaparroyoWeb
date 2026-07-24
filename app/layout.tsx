@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { Fira_Code } from 'next/font/google';
 import { getLocale } from 'next-intl/server';
 import { Providers } from '@/app/providers';
+import { PageDecor } from '@/components/page-decor';
 import '@/styles/globals.css';
 
 // Single typeface across the whole site (matches the Figma).
@@ -38,6 +39,7 @@ export default async function RootLayout({
 			className={firaCode.variable}
 		>
 			<body className="min-h-screen bg-background font-sans text-foreground antialiased">
+				<PageDecor />
 				<Providers>{children}</Providers>
 				<Analytics />
 				<SpeedInsights />

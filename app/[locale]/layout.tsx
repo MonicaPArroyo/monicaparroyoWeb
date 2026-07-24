@@ -50,7 +50,7 @@ export default async function LocaleLayout({
 
 	return (
 		<NextIntlClientProvider messages={messages}>
-			<div className="flex min-h-screen flex-col">
+			<div className="relative z-10 flex min-h-screen flex-col">
 				<Navbar />
 				<SocialRail />
 				<main className="flex-1">{children}</main>

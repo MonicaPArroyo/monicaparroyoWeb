@@ -1,4 +1,4 @@
-import type { IconBaseProps } from 'react-icons';
+import type { IconBaseProps, IconType } from 'react-icons';
 import {
 	LuArrowUpRight,
 	LuMail,
@@ -11,10 +11,9 @@ import {
 
 // UI icons — all from Lucide (react-icons/lu), re-exported under stable names.
 // Default to 20px; a `className` size (e.g. size-3.5) or `size` prop overrides it.
-const withDefault =
-	(Icon: (p: IconBaseProps) => React.ReactElement) => (props: IconBaseProps) => (
-		<Icon size={20} {...props} />
-	);
+const withDefault = (Icon: IconType) => (props: IconBaseProps) => (
+	<Icon size={20} {...props} />
+);
 
 export const SunIcon = withDefault(LuSun);
 export const MoonIcon = withDefault(LuMoon);

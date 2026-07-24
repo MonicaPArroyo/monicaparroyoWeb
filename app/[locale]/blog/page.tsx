@@ -30,10 +30,13 @@ export default async function BlogPage({
 
 	return (
 		<section className="mx-auto max-w-6xl px-6 py-16 sm:py-24">
-			<h1 className="font-mono text-3xl font-bold tracking-tight">
-				<span className="text-accent">#</span>
-				{t('heading')}
-			</h1>
+			<div className="flex items-center gap-4">
+				<h1 className="whitespace-nowrap text-3xl font-bold tracking-tight">
+					<span className="text-accent">#</span>
+					{t('heading')}
+				</h1>
+				<span className="h-px flex-1 bg-separator" />
+			</div>
 			<p className="mt-2 text-muted">{t('subheading')}</p>
 
 			{posts.length === 0 ? (
