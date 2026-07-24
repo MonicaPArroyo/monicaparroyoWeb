@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 
 type LogoProps = {
-	/** Rendered height in px. Width scales to the 3:2 viewBox. */
+	/** Rendered size in px — the mark is square (1:1 viewBox). */
 	size?: number;
 	/** Subtle twinkle on the sun (use in the navbar). */
 	animated?: boolean;
@@ -33,22 +33,24 @@ export function Logo({
 	title = 'Mónica P. Arroyo',
 }: LogoProps) {
 	// White 5-point stars (base = foreground). Slash keeps only 2 stars.
+	// The `</>` glyph is ~22 units tall; y-coords are shifted down +8 so it sits
+	// centered in the square 48×48 viewBox.
 	const stars = [
-		[13, 5],
-		[3, 16],
-		[13, 27], // <
-		[45, 16],
-		[35, 27], // >  (top vertex is the sun)
-		[20, 27],
-		[28, 5], // slash — 2 stars
+		[13, 13],
+		[3, 24],
+		[13, 35], // <
+		[45, 24],
+		[35, 35], // >  (top vertex is the sun)
+		[20, 35],
+		[28, 13], // slash — 2 stars
 	];
-	const sun = [35, 5]; // where the ">" begins
+	const sun = [35, 13]; // where the ">" begins
 
 	return (
 		<svg
-			width={Math.round(size * 1.5)}
+			width={size}
 			height={size}
-			viewBox="0 0 48 32"
+			viewBox="0 0 48 48"
 			fill="none"
 			role="img"
 			aria-label={title}
@@ -62,9 +64,9 @@ export function Logo({
 				strokeLinejoin="round"
 				opacity={0.5}
 			>
-				<polyline points="13,5 3,16 13,27" />
-				<polyline points="35,5 45,16 35,27" />
-				<polyline points="20,27 28,5" />
+				<polyline points="13,13 3,24 13,35" />
+				<polyline points="35,13 45,24 35,35" />
+				<polyline points="20,35 28,13" />
 			</g>
 
 			{/* white 5-point stars */}
