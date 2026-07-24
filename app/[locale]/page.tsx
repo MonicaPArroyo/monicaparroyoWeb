@@ -3,6 +3,7 @@ import { About } from '@/components/sections/about';
 import { Contact } from '@/components/sections/contact';
 import { Hero } from '@/components/sections/hero';
 import { Projects } from '@/components/sections/projects';
+import { Quote } from '@/components/sections/quote';
 import { Skills } from '@/components/sections/skills';
 
 export default async function Home({
@@ -16,6 +17,7 @@ export default async function Home({
 	return (
 		<>
 			<Hero />
+			<Quote />
 			<Projects />
 			<Skills />
 			<About />
