@@ -58,6 +58,32 @@ const components: PortableTextComponents = {
 				/>
 			);
 		},
+		// A run of ≥2 consecutive images (e.g. the Karnaugh maps) collapses into a
+		// responsive grid so they don't eat a full column each. See groupImages().
+		imageGroup: ({ value }) => {
+			const images = (value?.images ?? []) as Array<Record<string, unknown>>;
+			// Flex + justify-center → two per row, and a lone last item (odd count,
+			// e.g. 7 Karnaugh maps) centers itself instead of hugging the left.
+			return (
+				<div className="my-6 flex flex-wrap justify-center gap-3">
+					{images.map((img) => {
+						const b = urlFor(img);
+						if (!b) return null;
+						const { w, h } = imageDims(img);
+						return (
+							<Image
+								key={String(img._key)}
+								src={b.width(700).fit('max').url()}
+								alt={(img.alt as string) ?? ''}
+								width={w}
+								height={h}
+								className="h-auto w-[calc(50%_-_0.5rem)] rounded-lg border border-separator"
+							/>
+						);
+					})}
+				</div>
+			);
+		},
 		embed: ({ value }) => {
 			const url: string | undefined = value?.url;
 			if (!url) return null;
@@ -78,6 +104,42 @@ const components: PortableTextComponents = {
 	},
 };
 
+/** Sanity image refs embed dimensions: `image-<hash>-585x679-png`. */
+function imageDims(img: Record<string, unknown>): { w: number; h: number } {
+	const ref = (img?.asset as { _ref?: string } | undefined)?._ref ?? '';
+	const m = /-(\d+)x(\d+)-/.exec(ref);
+	return m ? { w: Number(m[1]), h: Number(m[2]) } : { w: 800, h: 800 };
+}
+
+/** Collapse runs of ≥2 consecutive image blocks into a single `imageGroup`
+ *  (rendered as a grid). Lone images (like the truth table) pass through. */
+function groupImages(blocks: Array<Record<string, unknown>>) {
+	const out: Array<Record<string, unknown>> = [];
+	let run: Array<Record<string, unknown>> = [];
+	const flush = () => {
+		if (run.length >= 2) {
+			out.push({
+				_type: 'imageGroup',
+				_key: `imggroup-${String(run[0]._key)}`,
+				images: run,
+			});
+		} else if (run.length === 1) {
+			out.push(run[0]);
+		}
+		run = [];
+	};
+	for (const block of blocks) {
+		if (block?._type === 'image') run.push(block);
+		else {
+			flush();
+			out.push(block);
+		}
+	}
+	flush();
+	return out;
+}
+
 export function PortableTextBody({ value }: { value: unknown[] }) {
-	return <PortableText value={value as never} components={components} />;
+	const blocks = groupImages(value as Array<Record<string, unknown>>);
+	return <PortableText value={blocks as never} components={components} />;
 }
