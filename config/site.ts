@@ -2,7 +2,7 @@
 
 export type NavItem = {
 	/** i18n key under the `nav` namespace. */
-	key: 'home' | 'works' | 'about' | 'contact' | 'blog';
+	key: 'home' | 'works' | 'experience' | 'about' | 'contact' | 'blog';
 	href: string;
 	/** true → real route (locale-aware Link); false → same-page hash anchor. */
 	route?: boolean;
@@ -28,6 +28,7 @@ export const siteConfig = {
 	navItems: [
 		{ key: 'home', href: '#home' },
 		{ key: 'works', href: '#works' },
+		{ key: 'experience', href: '#experience' },
 		{ key: 'about', href: '#about-me' },
 		{ key: 'contact', href: '#contacts' },
 		{ key: 'blog', href: '/blog', route: true },

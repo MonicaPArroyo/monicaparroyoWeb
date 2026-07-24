@@ -6,6 +6,7 @@
 	"nav": {
 		"home": "inicio",
 		"works": "proyectos",
+		"experience": "experiencia",
 		"about": "sobre-mí",
 		"contact": "contacto",
 		"blog": "blog"
@@ -45,6 +46,42 @@
 			"calaverita": "Librería de Arduino: mide distancia y mueve una quijada con sonido y luces.",
 			"decoder": "Circuito de lógica combinacional que convierte una entrada binaria (BCD) en el patrón de un display de 7 segmentos.",
 			"snowball": "Endless-runner publicado en itch.io."
+		}
+	},
+	"experience": {
+		"heading": "experiencia",
+		"subheading": "Dónde he construido cosas.",
+		"now": "actualidad",
+		"before": "Antes de dev — <b>educadora STEAM</b>: enseñé Arduino y robótica en el <link>Instituto Francisco Possenti</link> (2019–2022).",
+		"items": {
+			"hirint": {
+				"period": "may 2024 — actualidad",
+				"duration": "2+ años",
+				"location": "Remoto",
+				"summary": "Desarrollo y escalo la plataforma en un stack moderno, tras participar en la migración de la arquitectura legacy a Next.js y TypeScript.",
+				"highlights": [
+					"Diseñé e implementé de punta a punta la función de Valoraciones: del modelo de datos y la lógica en Laravel hasta la UI final.",
+					"Mantengo 15+ informes de evaluación (web y PDF) con componentes reutilizables; optimicé consultas SQL para exportaciones masivas."
+				]
+			},
+			"yaganaste": {
+				"period": "ene 2024 — may 2024",
+				"duration": "5 m",
+				"location": "CDMX",
+				"summary": "Renové la interfaz con Next.js y TypeScript y colaboré en la separación de frontend y backend."
+			},
+			"snowballcommunity": {
+				"period": "mar 2023 — dic 2023",
+				"duration": "10 m",
+				"location": "CDMX",
+				"summary": "Lideré el desarrollo de una red social para emprendedores e inversionistas, bilingüe (ES/EN) desde el día uno."
+			},
+			"snowballmx": {
+				"period": "ene 2022 — mar 2023",
+				"duration": "1 año 3 m",
+				"location": "CDMX",
+				"summary": "Desarrollo y mejora continua de una plataforma fintech de crowdfunding."
+			}
 		}
 	},
 	"skills": {

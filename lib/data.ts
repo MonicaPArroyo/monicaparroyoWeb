@@ -117,6 +117,66 @@ export const projects: Project[] = [
 	},
 ];
 
+/** Work history. Prose (period/location/summary/highlights) is translated via
+ *  i18n under `experience.items.<key>`; proper nouns + tech + links live here. */
+export type Experience = {
+	/** react key + i18n key under `experience.items`. */
+	key: string;
+	/** proper noun — not translated. */
+	company: string;
+	/** discreet external link on the company name (omit → plain text). */
+	companyHref?: string;
+	/** job title — kept in English across locales (as elsewhere on the site). */
+	role: string;
+	/** highlights the current role with the gold node + "now" tag. */
+	current?: boolean;
+	/** whether i18n provides a `highlights` array for this role. */
+	hasHighlights?: boolean;
+	tech: string[];
+};
+
+export const experiences: Experience[] = [
+	{
+		key: 'hirint',
+		company: 'Hirint',
+		companyHref: 'https://hirint.io',
+		role: 'Frontend Developer',
+		current: true,
+		hasHighlights: true,
+		tech: ['Next.js', 'TypeScript', 'Laravel', 'SQL', 'UI/UX'],
+	},
+	{
+		key: 'yaganaste',
+		company: 'Ya Ganaste',
+		companyHref: 'https://www.yaganaste.com/',
+		role: 'Frontend Developer',
+		tech: [
+			'Next.js',
+			'TypeScript',
+			'Material UI',
+			'React Query',
+			'TanStack Table',
+			'Chart.js',
+			'Zod',
+			'Zustand',
+		],
+	},
+	{
+		key: 'snowballcommunity',
+		company: 'Snowball Community',
+		companyHref: 'https://www.snowball.mx/',
+		role: 'Fullstack Developer',
+		tech: ['Laravel', 'Next.js', 'React', 'GraphQL', 'Apollo', 'MySQL', 'Redux'],
+	},
+	{
+		key: 'snowballmx',
+		company: 'Snowball.MX',
+		companyHref: 'https://www.snowball.mx/',
+		role: 'Fullstack Developer',
+		tech: ['PHP', 'Smarty', 'Bootstrap', 'MySQL'],
+	},
+];
+
 export type SkillGroup = {
 	/** i18n key under `skills.categories`. */
 	key: string;
