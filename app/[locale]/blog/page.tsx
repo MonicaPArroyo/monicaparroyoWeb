@@ -15,7 +15,18 @@ export async function generateMetadata({
 }): Promise<Metadata> {
 	const { locale } = await params;
 	const t = await getTranslations({ locale, namespace: 'blog' });
-	return { title: 'Blog', description: t('subheading') };
+	const url = `/${locale}/blog`;
+	return {
+		title: 'Blog',
+		description: t('subheading'),
+		alternates: { canonical: url },
+		openGraph: {
+			type: 'website',
+			title: 'Blog',
+			description: t('subheading'),
+			url,
+		},
+	};
 }
 
 export default async function BlogPage({
@@ -25,8 +36,10 @@ export default async function BlogPage({
 }) {
 	const { locale } = await params;
 	setRequestLocale(locale);
-	const t = await getTranslations('blog');
-	const posts = await getAllPosts();
+	const [t, posts] = await Promise.all([
+		getTranslations('blog'),
+		getAllPosts(),
+	]);
 
 	return (
 		<section className="mx-auto max-w-6xl px-6 py-16 sm:py-24">
@@ -58,7 +71,7 @@ export default async function BlogPage({
 											src={post.cover.url}
 											alt={post.cover.alt}
 											fill
-											sizes="(max-width: 768px) 100vw, 33vw"
+											sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
 											className="object-cover"
 										/>
 									</div>
@@ -83,7 +96,7 @@ export default async function BlogPage({
 								{post.tags.length > 0 && (
 									<Card.Footer className="mt-auto flex flex-wrap gap-2">
 										{post.tags.map((tag) => (
-											<Chip key={tag} size="sm" variant="soft">
+											<Chip key={tag} size="sm" variant="soft" color="accent">
 												{tag}
 											</Chip>
 										))}

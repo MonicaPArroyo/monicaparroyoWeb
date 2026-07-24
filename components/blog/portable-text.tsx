@@ -48,12 +48,14 @@ const components: PortableTextComponents = {
 		image: ({ value }) => {
 			const b = urlFor(value);
 			if (!b) return null;
+			const { w, h } = imageDims(value as Record<string, unknown>);
 			return (
 				<Image
 					src={b.width(1200).fit('max').url()}
 					alt={value?.alt ?? ''}
-					width={1200}
-					height={800}
+					width={w}
+					height={h}
+					sizes="(max-width: 768px) 100vw, 768px"
 					className="my-6 h-auto w-full rounded-xl border border-separator"
 				/>
 			);
@@ -77,6 +79,7 @@ const components: PortableTextComponents = {
 								alt={(img.alt as string) ?? ''}
 								width={w}
 								height={h}
+								sizes="(max-width: 768px) 50vw, 384px"
 								className="h-auto w-[calc(50%_-_0.5rem)] rounded-lg border border-separator"
 							/>
 						);
@@ -105,9 +108,10 @@ const components: PortableTextComponents = {
 };
 
 /** Sanity image refs embed dimensions: `image-<hash>-585x679-png`. */
+const IMAGE_REF_DIMS = /-(\d+)x(\d+)-/;
 function imageDims(img: Record<string, unknown>): { w: number; h: number } {
 	const ref = (img?.asset as { _ref?: string } | undefined)?._ref ?? '';
-	const m = /-(\d+)x(\d+)-/.exec(ref);
+	const m = IMAGE_REF_DIMS.exec(ref);
 	return m ? { w: Number(m[1]), h: Number(m[2]) } : { w: 800, h: 800 };
 }
 

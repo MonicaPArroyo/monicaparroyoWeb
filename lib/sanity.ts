@@ -1,5 +1,6 @@
 import { createClient, type SanityClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
+import { cache } from 'react';
 
 export type BlogPost = {
 	title: string;
@@ -48,7 +49,18 @@ const POST_FIELDS = /* groq */ `
 	}
 `;
 
-function mapPost(doc: any): BlogPost {
+/** Loosely-typed raw shape returned by the GROQ query (Sanity fetch is untyped). */
+type RawPost = {
+	title?: string;
+	slug?: string;
+	excerpt?: string;
+	cover?: { url?: string; width?: number; height?: number; alt?: string } | null;
+	publishedDate?: string;
+	tags?: unknown;
+	body?: unknown[] | null;
+};
+
+function mapPost(doc: RawPost): BlogPost {
 	return {
 		title: doc?.title ?? '',
 		slug: doc?.slug ?? '',
@@ -67,7 +79,10 @@ function mapPost(doc: any): BlogPost {
 	};
 }
 
-export async function getAllPosts(): Promise<BlogPost[]> {
+// Wrapped in React.cache() so calls within a single request are deduped —
+// @sanity/client doesn't use Next's extended fetch, so without this the blog
+// post page would hit Sanity twice (generateMetadata + the page body).
+export const getAllPosts = cache(async (): Promise<BlogPost[]> => {
 	if (!sanityClient) return [];
 	try {
 		const docs = await sanityClient.fetch(
@@ -78,20 +93,22 @@ export async function getAllPosts(): Promise<BlogPost[]> {
 		console.error('[sanity] getAllPosts failed:', err);
 		return [];
 	}
-}
+});
 
-export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
-	if (!sanityClient) return null;
-	try {
-		const doc = await sanityClient.fetch(
-			`*[_type == "blogPost" && slug.current == $slug][0]{${POST_FIELDS}, body}`,
-			{ slug },
-		);
-		return doc ? mapPost(doc) : null;
-	} catch (err) {
-		console.error('[sanity] getPostBySlug failed:', err);
-		return null;
-	}
-}
+export const getPostBySlug = cache(
+	async (slug: string): Promise<BlogPost | null> => {
+		if (!sanityClient) return null;
+		try {
+			const doc = await sanityClient.fetch(
+				`*[_type == "blogPost" && slug.current == $slug][0]{${POST_FIELDS}, body}`,
+				{ slug },
+			);
+			return doc ? mapPost(doc) : null;
+		} catch (err) {
+			console.error('[sanity] getPostBySlug failed:', err);
+			return null;
+		}
+	},
+);
 
 export const isSanityConfigured = Boolean(projectId);

@@ -18,12 +18,25 @@ export async function generateStaticParams() {
 export async function generateMetadata({
 	params,
 }: {
-	params: Promise<{ slug: string }>;
+	params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-	const { slug } = await params;
+	const { locale, slug } = await params;
 	const post = await getPostBySlug(slug);
 	if (!post) return { title: 'Blog' };
-	return { title: post.title, description: post.excerpt };
+	const url = `/${locale}/blog/${slug}`;
+	return {
+		title: post.title,
+		description: post.excerpt,
+		alternates: { canonical: url },
+		openGraph: {
+			type: 'article',
+			title: post.title,
+			description: post.excerpt,
+			url,
+			publishedTime: post.publishedDate,
+			images: post.cover ? [{ url: post.cover.url }] : undefined,
+		},
+	};
 }
 
 export default async function PostPage({
@@ -33,8 +46,10 @@ export default async function PostPage({
 }) {
 	const { locale, slug } = await params;
 	setRequestLocale(locale);
-	const t = await getTranslations('blog');
-	const post = await getPostBySlug(slug);
+	const [t, post] = await Promise.all([
+		getTranslations('blog'),
+		getPostBySlug(slug),
+	]);
 	if (!post) notFound();
 
 	return (
@@ -75,6 +90,7 @@ export default async function PostPage({
 					alt={post.cover.alt}
 					width={post.cover.width ?? 1200}
 					height={post.cover.height ?? 630}
+					sizes="(max-width: 768px) 100vw, 768px"
 					className="mt-8 w-full rounded-2xl border border-separator object-cover"
 					priority
 				/>
