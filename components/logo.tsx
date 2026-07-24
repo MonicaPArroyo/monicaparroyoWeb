@@ -3,19 +3,28 @@ import { clsx } from 'clsx';
 type LogoProps = {
 	/** Rendered height in px. Width scales to the 3:2 viewBox. */
 	size?: number;
-	/** Subtle twinkle on the nova star (use in the navbar). */
+	/** Subtle twinkle on the sun (use in the navbar). */
 	animated?: boolean;
 	className?: string;
 	title?: string;
 };
 
+/** 5-point star polygon points centered at (cx,cy). */
+function star(cx: number, cy: number, rOuter = 2.6): string {
+	const rInner = rOuter * 0.4;
+	const pts: string[] = [];
+	for (let i = 0; i < 10; i++) {
+		const r = i % 2 === 0 ? rOuter : rInner;
+		const a = -Math.PI / 2 + (i * Math.PI) / 5;
+		pts.push(`${(cx + r * Math.cos(a)).toFixed(2)},${(cy + r * Math.sin(a)).toFixed(2)}`);
+	}
+	return pts.join(' ');
+}
+
 /**
- * Brand mark — the `</>` code glyph drawn as a constellation: star-points
- * joined by faint lines, with the center star (on the slash) shining in the
- * nova-gold token while the rest use the accent color.
- *
- * Colors come from theme tokens via `stroke-accent` / `fill-accent` / `fill-nova`,
- * so the mark follows light/dark automatically.
+ * Brand mark — the `</>` glyph drawn as a constellation of 5-point stars joined
+ * by faint lines. Base (lines + stars) uses the foreground color (white on the
+ * dark theme); one larger "sun" shines in the nova-gold token.
  */
 export function Logo({
 	size = 28,
@@ -23,19 +32,17 @@ export function Logo({
 	className,
 	title = 'Mónica P. Arroyo',
 }: LogoProps) {
-	// Star points on a 48×32 canvas.
-	const accentStars = [
+	// White 5-point stars (base = foreground). Slash keeps only 2 stars.
+	const stars = [
 		[13, 5],
 		[3, 16],
 		[13, 27], // <
 		[45, 16],
-		[35, 27], // >
+		[35, 27], // >  (top vertex is the sun)
 		[20, 27],
-		[24, 16], // slash midpoint
-		[28, 5], // slash ends
+		[28, 5], // slash — 2 stars
 	];
-	// Off-center for asymmetry: the star where the ">" begins (its top vertex).
-	const nova = [35, 5];
+	const sun = [35, 5]; // where the ">" begins
 
 	return (
 		<svg
@@ -45,38 +52,38 @@ export function Logo({
 			fill="none"
 			role="img"
 			aria-label={title}
-			className={clsx('shrink-0', className)}
+			className={clsx('shrink-0 text-foreground', className)}
 		>
 			{/* constellation lines */}
 			<g
-				className="stroke-accent"
-				strokeWidth={1.6}
+				stroke="currentColor"
+				strokeWidth={1.4}
 				strokeLinecap="round"
 				strokeLinejoin="round"
-				opacity={0.55}
+				opacity={0.5}
 			>
 				<polyline points="13,5 3,16 13,27" />
 				<polyline points="35,5 45,16 35,27" />
-				<polyline points="20,27 24,16 28,5" />
+				<polyline points="20,27 28,5" />
 			</g>
 
-			{/* accent stars */}
-			<g className="fill-accent">
-				{accentStars.map(([cx, cy]) => (
-					<circle key={`${cx}-${cy}`} cx={cx} cy={cy} r={1.7} />
+			{/* white 5-point stars */}
+			<g fill="currentColor">
+				{stars.map(([cx, cy]) => (
+					<polygon key={`${cx}-${cy}`} points={star(cx, cy)} />
 				))}
 			</g>
 
-			{/* nova star (center, brighter + larger) */}
+			{/* the "sun" — larger, gold, with a soft glow */}
 			<g
 				className={clsx(
 					'fill-nova',
 					animated && '[animation:nova-twinkle_2.8s_ease-in-out_infinite]',
 				)}
-				style={{ transformOrigin: `${nova[0]}px ${nova[1]}px` }}
+				style={{ transformOrigin: `${sun[0]}px ${sun[1]}px` }}
 			>
-				<circle cx={nova[0]} cy={nova[1]} r={3.4} opacity={0.25} />
-				<circle cx={nova[0]} cy={nova[1]} r={2.4} />
+				<circle cx={sun[0]} cy={sun[1]} r={3.6} opacity={0.25} />
+				<circle cx={sun[0]} cy={sun[1]} r={2.5} />
 			</g>
 		</svg>
 	);
