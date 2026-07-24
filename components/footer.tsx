@@ -11,11 +11,19 @@ export function Footer() {
 		<footer className="mt-24 border-t border-separator">
 			<div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 sm:flex-row sm:items-start sm:justify-between">
 				<div className="max-w-sm">
-					<div className="flex items-center gap-2">
-						<Logo size={40} />
-						<span className="font-mono text-lg font-semibold tracking-tight">
-							{siteConfig.name}
+					<div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+						<span className="flex items-center gap-2">
+							<Logo size={36} />
+							<span className="text-lg font-semibold tracking-tight">
+								{siteConfig.name}
+							</span>
 						</span>
+						<a
+							href={`mailto:${siteConfig.email}`}
+							className="text-sm text-muted transition-colors hover:text-accent"
+						>
+							{siteConfig.email}
+						</a>
 					</div>
 					<p className="mt-3 text-sm text-muted">{t('tagline')}</p>
 				</div>
