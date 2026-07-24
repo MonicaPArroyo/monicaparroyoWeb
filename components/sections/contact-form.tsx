@@ -11,6 +11,7 @@ import {
 } from '@heroui/react';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
+import { accentSolidButtonClass } from '@/components/link-button';
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 type Status = 'idle' | 'sending' | 'success' | 'error';
@@ -28,6 +29,7 @@ export function ContactForm() {
 			email: fd.get('email'),
 			title: fd.get('title'),
 			message: fd.get('message'),
+			company: fd.get('company'), // honeypot
 		};
 
 		setStatus('sending');
@@ -47,10 +49,24 @@ export function ContactForm() {
 
 	return (
 		<Form className="flex flex-col gap-4" onSubmit={onSubmit}>
+			{/* Honeypot — off-screen, hidden from people & assistive tech. Bots that
+			    auto-fill every field trip it and get silently dropped server-side. */}
+			<div
+				aria-hidden
+				className="absolute left-[-9999px] top-[-9999px] h-0 w-0 overflow-hidden"
+			>
+				<input
+					type="text"
+					name="company"
+					tabIndex={-1}
+					autoComplete="off"
+				/>
+			</div>
+
 			<div className="grid gap-4 sm:grid-cols-2">
 				<TextField isRequired name="name">
 					<Label>{t('name')}</Label>
-					<Input placeholder={t('namePlaceholder')} />
+					<Input maxLength={120} placeholder={t('namePlaceholder')} />
 					<FieldError />
 				</TextField>
 
@@ -61,20 +77,24 @@ export function ContactForm() {
 					validate={(value) => (EMAIL_RE.test(value) ? null : t('invalidEmail'))}
 				>
 					<Label>{t('email')}</Label>
-					<Input placeholder="tu@correo.com" />
+					<Input maxLength={160} placeholder="tu@correo.com" />
 					<FieldError />
 				</TextField>
 			</div>
 
 			<TextField isRequired name="title">
 				<Label>{t('title')}</Label>
-				<Input placeholder={t('titlePlaceholder')} />
+				<Input maxLength={160} placeholder={t('titlePlaceholder')} />
 				<FieldError />
 			</TextField>
 
 			<TextField isRequired name="message">
 				<Label>{t('message')}</Label>
-				<TextArea className="min-h-32" placeholder={t('messagePlaceholder')} />
+				<TextArea
+					maxLength={5000}
+					className="min-h-32"
+					placeholder={t('messagePlaceholder')}
+				/>
 				<FieldError />
 			</TextField>
 
@@ -82,7 +102,7 @@ export function ContactForm() {
 				<Button
 					type="submit"
 					isDisabled={status === 'sending'}
-					className="bg-accent-solid text-accent-solid-foreground"
+					className={accentSolidButtonClass}
 				>
 					{status === 'sending' ? t('sending') : t('send')}
 				</Button>
