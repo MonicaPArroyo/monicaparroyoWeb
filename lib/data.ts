@@ -96,11 +96,11 @@ export const projects: Project[] = [
 		name: 'Decodificador a 7 segmentos',
 		tech: ['Electrónica', 'Lógica digital', 'Tinkercad'],
 		links: [
+			{ type: 'blog', href: '/blog/decodificador-binario-7-segmentos' },
 			{
 				type: 'tinkercad',
 				href: 'https://www.tinkercad.com/things/j96Q0IwrwoT-decodificador-binario-a-7-segmentos',
 			},
-			{ type: 'blog', href: '/blog/decodificador-binario-7-segmentos' },
 		],
 		featured: false,
 		tint: 'accent',
