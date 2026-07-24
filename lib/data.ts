@@ -17,15 +17,32 @@ export type Project = {
 	featured: boolean;
 	/** cover accent tint. */
 	tint: 'accent' | 'nova';
+	/** optional co-author, shown as a small credit link on the card. */
+	collaborator?: { name: string; href: string };
 };
 
 export const projects: Project[] = [
+	{
+		key: 'weddinghub',
+		name: 'WeddingHub',
+		tech: ['Next.js', 'TypeScript', 'Prisma', 'NextAuth', 'MUI'],
+		links: [
+			{ type: 'live', href: 'https://araylalo.vercel.app/' },
+			{ type: 'github', href: 'https://github.com/DavidNegreteL/weddingHub' },
+		],
+		featured: true,
+		tint: 'nova',
+		collaborator: { name: 'David', href: 'https://github.com/DavidNegreteL' },
+	},
 	{
 		key: 'astroletras',
 		name: 'AstroLetras',
 		year: '2024',
 		tech: ['Next.js', 'Zustand', 'NextUI', 'Cypress'],
-		links: [{ type: 'live', href: 'https://astroletras.vercel.app/' }],
+		links: [
+			{ type: 'live', href: 'https://astroletras.vercel.app/' },
+			{ type: 'github', href: 'https://github.com/MonicaPArroyo/AstroLetras' },
+		],
 		featured: true,
 		tint: 'accent',
 	},
@@ -33,7 +50,10 @@ export const projects: Project[] = [
 		key: 'crystalgems',
 		name: 'CrystalGems',
 		tech: ['Next.js', 'Vercel'],
-		links: [{ type: 'live', href: 'https://crystalgems.vercel.app/' }],
+		links: [
+			{ type: 'live', href: 'https://crystalgems.vercel.app/' },
+			{ type: 'github', href: 'https://github.com/MonicaPArroyo/CrystalGems' },
+		],
 		featured: true,
 		tint: 'nova',
 	},
@@ -41,7 +61,10 @@ export const projects: Project[] = [
 		key: 'contactapp',
 		name: 'ContactApp',
 		tech: ['Next.js', 'Prisma', 'Formik', 'Yup'],
-		links: [{ type: 'live', href: 'https://mpa-contactapp.vercel.app/' }],
+		links: [
+			{ type: 'live', href: 'https://mpa-contactapp.vercel.app/' },
+			{ type: 'github', href: 'https://github.com/MonicaPArroyo/ContactApp' },
+		],
 		featured: true,
 		tint: 'accent',
 	},

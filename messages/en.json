@@ -26,6 +26,7 @@
 		"subheading": "A selection of things I've built.",
 		"featured": "Featured",
 		"small": "Small & hobby projects",
+		"collab": "In collaboration with",
 		"links": {
 			"live": "Live",
 			"github": "GitHub",
@@ -36,6 +37,7 @@
 			"tinkercad": "Tinkercad"
 		},
 		"items": {
+			"weddinghub": "A single RSVP app for weddings: guest management, confirmations and a countdown, with authentication and an admin dashboard.",
 			"astroletras": "Book catalog with search and global state.",
 			"crystalgems": "Steven Universe character catalog.",
 			"contactapp": "Full-stack contacts CRUD with form validation.",
@@ -101,6 +103,7 @@
 	"footer": {
 		"tagline": "Turning lines of code into opportunities for the future ✨",
 		"social": "Social",
+		"support": "Buy me a coffee",
 		"rights": "All rights reserved."
 	}
 }

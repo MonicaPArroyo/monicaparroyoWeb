@@ -26,6 +26,7 @@
 		"subheading": "Una selección de lo que he construido.",
 		"featured": "Destacados",
 		"small": "Proyectos pequeños & hobby",
+		"collab": "En colaboración con",
 		"links": {
 			"live": "Live",
 			"github": "GitHub",
@@ -36,6 +37,7 @@
 			"tinkercad": "Tinkercad"
 		},
 		"items": {
+			"weddinghub": "App de RSVP para bodas: gestión de invitados, confirmaciones y cuenta regresiva, con autenticación y panel de administración.",
 			"astroletras": "Catálogo de libros con búsqueda y estado global.",
 			"crystalgems": "Catálogo de personajes de Steven Universe.",
 			"contactapp": "CRUD fullstack de contactos con validación de formularios.",
@@ -101,6 +103,7 @@
 	"footer": {
 		"tagline": "Transformando líneas de código en oportunidades para el futuro ✨",
 		"social": "Redes",
+		"support": "Invítame un café",
 		"rights": "Todos los derechos reservados."
 	}
 }

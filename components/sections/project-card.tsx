@@ -33,6 +33,29 @@ function Actions({ project, t }: { project: Project; t: (k: string) => string })
 	);
 }
 
+function Collab({
+	project,
+	t,
+}: {
+	project: Project;
+	t: (k: string) => string;
+}) {
+	if (!project.collaborator) return null;
+	return (
+		<p className="mt-3 text-xs text-muted">
+			{t('collab')}{' '}
+			<a
+				href={project.collaborator.href}
+				target="_blank"
+				rel="noopener noreferrer"
+				className="font-medium text-accent transition-colors hover:brightness-110"
+			>
+				{project.collaborator.name}
+			</a>
+		</p>
+	);
+}
+
 export function ProjectCard({
 	project,
 	variant,
@@ -54,6 +77,7 @@ export function ProjectCard({
 					<p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
 						{t(`items.${project.key}`)}
 					</p>
+					<Collab project={project} t={t} />
 					<Actions project={project} t={t} />
 				</div>
 			</div>
@@ -87,6 +111,7 @@ export function ProjectCard({
 				<p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
 					{t(`items.${project.key}`)}
 				</p>
+				<Collab project={project} t={t} />
 				<Actions project={project} t={t} />
 			</div>
 		</div>
