@@ -1,20 +1,16 @@
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Fira_Code } from 'next/font/google';
 import { getLocale } from 'next-intl/server';
 import { Providers } from '@/app/providers';
 import '@/styles/globals.css';
 
-const inter = Inter({
+// Single typeface across the whole site (matches the Figma).
+const firaCode = Fira_Code({
 	subsets: ['latin'],
-	variable: '--font-inter',
-	display: 'swap',
-});
-
-const jetbrains = JetBrains_Mono({
-	subsets: ['latin'],
-	variable: '--font-jetbrains',
+	variable: '--font-fira',
+	weight: ['300', '400', '500', '600', '700'],
 	display: 'swap',
 });
 
@@ -39,7 +35,7 @@ export default async function RootLayout({
 		<html
 			lang={locale}
 			suppressHydrationWarning
-			className={`${inter.variable} ${jetbrains.variable}`}
+			className={firaCode.variable}
 		>
 			<body className="min-h-screen bg-background font-sans text-foreground antialiased">
 				<Providers>{children}</Providers>

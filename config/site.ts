@@ -8,10 +8,17 @@ export type NavItem = {
 	route?: boolean;
 };
 
+export type SocialBrand =
+	| 'github'
+	| 'linkedin'
+	| 'instagram'
+	| 'itch'
+	| 'tinkercad';
+
 export type SocialLink = {
 	name: string;
 	href: string;
-	icon: string;
+	brand: SocialBrand;
 };
 
 export const siteConfig = {
@@ -28,27 +35,27 @@ export const siteConfig = {
 		{
 			name: 'GitHub',
 			href: 'https://github.com/MonicaPArroyo',
-			icon: '/images/Github.png',
+			brand: 'github',
 		},
 		{
 			name: 'LinkedIn',
 			href: 'https://www.linkedin.com/in/monicaparroyo/',
-			icon: '/images/Linkedin.png',
+			brand: 'linkedin',
 		},
 		{
 			name: 'Instagram',
 			href: 'https://www.instagram.com/monicaparroyo/',
-			icon: '/images/Instagram.png',
+			brand: 'instagram',
 		},
 		{
 			name: 'Itch.io',
 			href: 'https://monicaparroyo.itch.io/',
-			icon: '/images/Itch.png',
+			brand: 'itch',
 		},
 		{
 			name: 'Tinkercad',
 			href: 'https://www.tinkercad.com/users/97kCQIzEEaU',
-			icon: '/images/Tinkercad.png',
+			brand: 'tinkercad',
 		},
 	] satisfies SocialLink[],
 } as const;

@@ -6,16 +6,12 @@
 /* Enable class-based dark variant (next-themes sets class="dark") */
 @custom-variant dark (&:is(.dark *));
 
-@theme {
-	/* Fonts wired from next/font CSS variables (see app/layout.tsx) */
-	--font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-	--font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", monospace;
-}
-
-/* Expose the custom brand token --nova as Tailwind utilities.
-   `inline` makes bg-nova / text-nova / text-nova-foreground resolve the runtime
-   CSS variable, so they follow the active theme like HeroUI's own tokens. */
+/* `inline` is required when a theme value references another CSS variable
+   (next/font's --font-fira, and our --nova) so the utility emits var(...). */
 @theme inline {
+	/* Single typeface — Fira Code everywhere (matches the Figma). */
+	--font-sans: var(--font-fira), ui-monospace, "SF Mono", monospace;
+	--font-mono: var(--font-fira), ui-monospace, "SF Mono", monospace;
 	--color-nova: var(--nova);
 	--color-nova-foreground: var(--nova-foreground);
 }

@@ -18,10 +18,13 @@ export function Section({ id, title, subtitle, children, className }: SectionPro
 		>
 			{title && (
 				<header className="mb-10">
-					<h2 className="font-mono text-2xl font-bold tracking-tight sm:text-3xl">
-						<span className="text-accent">#</span>
-						{title}
-					</h2>
+					<div className="flex items-center gap-4">
+						<h2 className="whitespace-nowrap text-2xl font-bold tracking-tight sm:text-3xl">
+							<span className="text-accent">#</span>
+							{title}
+						</h2>
+						<span className="h-px flex-1 bg-separator" />
+					</div>
 					{subtitle && <p className="mt-2 text-muted">{subtitle}</p>}
 				</header>
 			)}

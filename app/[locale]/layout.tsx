@@ -4,6 +4,7 @@ import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server
 import { notFound } from 'next/navigation';
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
+import { SocialRail } from '@/components/social-rail';
 import { routing } from '@/i18n/routing';
 
 export function generateStaticParams() {
@@ -51,6 +52,7 @@ export default async function LocaleLayout({
 		<NextIntlClientProvider messages={messages}>
 			<div className="flex min-h-screen flex-col">
 				<Navbar />
+				<SocialRail />
 				<main className="flex-1">{children}</main>
 				<Footer />
 			</div>
