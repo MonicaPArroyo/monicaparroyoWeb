@@ -13,7 +13,8 @@ export type SocialBrand =
 	| 'linkedin'
 	| 'instagram'
 	| 'itch'
-	| 'tinkercad';
+	| 'tinkercad'
+	| 'discord';
 
 export type SocialLink = {
 	name: string;
@@ -57,5 +58,11 @@ export const siteConfig = {
 			href: 'https://www.tinkercad.com/users/97kCQIzEEaU',
 			brand: 'tinkercad',
 		},
+		{
+			name: 'Discord',
+			href: 'https://discord.com/users/744638555833499689',
+			brand: 'discord',
+		},
 	] satisfies SocialLink[],
+	buyMeACoffee: 'https://buymeacoffee.com/monicaparroyo',
 } as const;

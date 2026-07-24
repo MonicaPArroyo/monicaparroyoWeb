@@ -1,4 +1,6 @@
 import { useTranslations } from 'next-intl';
+import { SiBuymeacoffee } from 'react-icons/si';
+import { LinkButton } from '@/components/link-button';
 import { Logo } from '@/components/logo';
 import { SocialLinks } from '@/components/social-links';
 import { siteConfig } from '@/config/site';
@@ -33,6 +35,16 @@ export function Footer() {
 						{t('social')}
 					</span>
 					<SocialLinks />
+					<LinkButton
+						href={siteConfig.buyMeACoffee}
+						variant="nova"
+						size="sm"
+						external
+						aria-label={t('support')}
+					>
+						<SiBuymeacoffee className="size-4" />
+						{t('support')}
+					</LinkButton>
 				</div>
 			</div>
 

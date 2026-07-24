@@ -1,7 +1,13 @@
 import { clsx } from 'clsx';
 import type { IconType } from 'react-icons';
 import { FaLinkedin } from 'react-icons/fa6';
-import { SiGithub, SiInstagram, SiItchdotio, SiTinkercad } from 'react-icons/si';
+import {
+	SiDiscord,
+	SiGithub,
+	SiInstagram,
+	SiItchdotio,
+	SiTinkercad,
+} from 'react-icons/si';
 import type { SocialBrand } from '@/config/site';
 import { siteConfig } from '@/config/site';
 
@@ -13,6 +19,7 @@ const brandIcon: Record<SocialBrand, IconType> = {
 	instagram: SiInstagram,
 	itch: SiItchdotio,
 	tinkercad: SiTinkercad,
+	discord: SiDiscord,
 };
 
 type SocialLinksProps = {
