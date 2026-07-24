@@ -5,9 +5,18 @@ import { ArrowUpRightIcon } from '@/components/icons';
 type Variant = 'primary' | 'outline' | 'nova' | 'ghost';
 type Size = 'sm' | 'md';
 
+/** Solid brand fill (dark blue + white) — passes AA. Shared with the contact
+ *  form's HeroUI Button so every primary CTA looks identical. */
+export const accentSolidButtonClass =
+	'bg-accent-solid text-accent-solid-foreground hover:brightness-110';
+
+/** Outline button at sm size — for the blog link in project cards, which is a
+ *  locale-aware next-intl Link (not an <a>), so it can't go through LinkButton. */
+export const outlineButtonSmClass =
+	'inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-all border border-border text-foreground hover:border-accent hover:text-accent';
+
 const variantCls: Record<Variant, string> = {
-	primary:
-		'bg-accent-solid text-accent-solid-foreground hover:brightness-110',
+	primary: accentSolidButtonClass,
 	nova: 'bg-nova text-nova-foreground hover:brightness-105',
 	outline:
 		'border border-border text-foreground hover:border-accent hover:text-accent',

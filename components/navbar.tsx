@@ -8,14 +8,61 @@ import { LanguageSwitch } from '@/components/language-switch';
 import { Logo } from '@/components/logo';
 import { SocialLinks } from '@/components/social-links';
 import { ThemeSwitch } from '@/components/theme-switch';
+import { iconButtonClass } from '@/components/ui';
 import { siteConfig } from '@/config/site';
 import { Link as IntlLink, usePathname } from '@/i18n/navigation';
+
+type NavKey = (typeof siteConfig.navItems)[number]['key'];
+
+const linkClass =
+	'font-mono text-foreground/80 transition-colors hover:text-accent';
+
+/** A nav entry. Hash anchors scroll in-page on home; from other routes they jump
+ *  to `/#section` (locale-aware) so the URL never becomes e.g. /es/blog#works.
+ *  Kept at module scope (not inside Navbar) so it isn't a new component type on
+ *  every render — that would remount every link. */
+function NavLink({
+	item,
+	t,
+	onHome,
+	onClick,
+	className,
+}: {
+	item: (typeof siteConfig.navItems)[number];
+	t: (key: NavKey) => string;
+	onHome: boolean;
+	onClick?: () => void;
+	className?: string;
+}) {
+	const cls = clsx(linkClass, className);
+	const inner = (
+		<>
+			<span className="text-accent">#</span>
+			{t(item.key)}
+		</>
+	);
+	if (item.route) {
+		return (
+			<IntlLink href={item.href} className={cls} onClick={onClick}>
+				{inner}
+			</IntlLink>
+		);
+	}
+	return onHome ? (
+		<a href={item.href} className={cls} onClick={onClick}>
+			{inner}
+		</a>
+	) : (
+		<IntlLink href={`/${item.href}`} className={cls} onClick={onClick}>
+			{inner}
+		</IntlLink>
+	);
+}
 
 export function Navbar() {
 	const t = useTranslations('nav');
 	const [open, setOpen] = useState(false);
-	// Locale-aware pathname ('/' on home, '/blog' elsewhere). Hash anchors only
-	// resolve on the home page; from other routes they must jump to home + hash.
+	// Locale-aware pathname ('/' on home, '/blog' elsewhere).
 	const onHome = usePathname() === '/';
 
 	// Close the drawer on Escape and lock body scroll while it's open.
@@ -30,100 +77,56 @@ export function Navbar() {
 		};
 	}, [open]);
 
-	const linkClass =
-		'font-mono text-foreground/80 transition-colors hover:text-accent';
-
-	function NavLink({
-		item,
-		onClick,
-		className,
-	}: {
-		item: (typeof siteConfig.navItems)[number];
-		onClick?: () => void;
-		className?: string;
-	}) {
-		const cls = clsx(linkClass, className);
-		const label = t(item.key);
-		const inner = (
-			<>
-				<span className="text-accent">#</span>
-				{label}
-			</>
-		);
-		// Real route (/blog): locale-aware Link.
-		if (item.route) {
-			return (
-				<IntlLink href={item.href} className={cls} onClick={onClick}>
-					{inner}
-				</IntlLink>
-			);
-		}
-		// Hash anchor: scroll in-page on home; from other routes, go home + hash
-		// (locale-aware) so the URL doesn't become e.g. /es/blog#experience.
-		return onHome ? (
-			<a href={item.href} className={cls} onClick={onClick}>
-				{inner}
-			</a>
-		) : (
-			<IntlLink href={`/${item.href}`} className={cls} onClick={onClick}>
-				{inner}
-			</IntlLink>
-		);
-	}
-
-	const iconBtn =
-		'flex size-9 items-center justify-center rounded-lg text-foreground transition-colors hover:bg-default hover:text-accent';
-
 	return (
 		<>
-		<header className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
-			<nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-6">
-				{onHome ? (
-					<a
-						href="#home"
-						className="flex items-center gap-2"
-						aria-label={siteConfig.name}
-					>
-						<Logo size={28} animated />
-						<span className="font-mono text-base font-semibold tracking-tight">
-							{siteConfig.name}
-						</span>
-					</a>
-				) : (
-					<IntlLink
-						href="/"
-						className="flex items-center gap-2"
-						aria-label={siteConfig.name}
-					>
-						<Logo size={28} animated />
-						<span className="font-mono text-base font-semibold tracking-tight">
-							{siteConfig.name}
-						</span>
-					</IntlLink>
-				)}
+			<header className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
+				<nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-6">
+					{onHome ? (
+						<a
+							href="#home"
+							className="flex items-center gap-2"
+							aria-label={siteConfig.name}
+						>
+							<Logo size={28} animated />
+							<span className="font-mono text-base font-semibold tracking-tight">
+								{siteConfig.name}
+							</span>
+						</a>
+					) : (
+						<IntlLink
+							href="/"
+							className="flex items-center gap-2"
+							aria-label={siteConfig.name}
+						>
+							<Logo size={28} animated />
+							<span className="font-mono text-base font-semibold tracking-tight">
+								{siteConfig.name}
+							</span>
+						</IntlLink>
+					)}
 
-				<ul className="hidden items-center gap-6 text-sm lg:flex">
-					{siteConfig.navItems.map((item) => (
-						<li key={item.key}>
-							<NavLink item={item} />
-						</li>
-					))}
-				</ul>
+					<ul className="hidden items-center gap-6 text-sm lg:flex">
+						{siteConfig.navItems.map((item) => (
+							<li key={item.key}>
+								<NavLink item={item} t={t} onHome={onHome} />
+							</li>
+						))}
+					</ul>
 
-				<div className="flex items-center gap-1 sm:gap-2">
-					<LanguageSwitch />
-					<ThemeSwitch />
-					<button
-						type="button"
-						onClick={() => setOpen(true)}
-						aria-label="Open menu"
-						aria-expanded={open}
-						className={clsx(iconBtn, 'lg:hidden')}
-					>
-						<MenuIcon />
-					</button>
-				</div>
-			</nav>
+					<div className="flex items-center gap-1 sm:gap-2">
+						<LanguageSwitch />
+						<ThemeSwitch />
+						<button
+							type="button"
+							onClick={() => setOpen(true)}
+							aria-label="Open menu"
+							aria-expanded={open}
+							className={clsx(iconButtonClass, 'lg:hidden')}
+						>
+							<MenuIcon />
+						</button>
+					</div>
+				</nav>
 			</header>
 
 			{/* Mobile drawer — kept OUTSIDE the header: the header's backdrop-blur
@@ -157,7 +160,7 @@ export function Navbar() {
 						type="button"
 						onClick={() => setOpen(false)}
 						aria-label="Close menu"
-						className={iconBtn}
+						className={iconButtonClass}
 					>
 						<CloseIcon />
 					</button>
@@ -168,6 +171,8 @@ export function Navbar() {
 						<li key={item.key}>
 							<NavLink
 								item={item}
+								t={t}
+								onHome={onHome}
 								className="text-lg"
 								onClick={() => setOpen(false)}
 							/>

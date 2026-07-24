@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { DotGrid, GeoSquares } from '@/components/decorations';
 import { LinkButton } from '@/components/link-button';
+import { MonogramTile } from '@/components/monogram-tile';
 
 export function Hero() {
 	const t = useTranslations('hero');
@@ -40,15 +41,16 @@ export function Hero() {
 					/>
 					<DotGrid className="absolute -left-6 top-8 -z-10 hidden text-accent/20 sm:block" />
 
-					<div className="relative flex aspect-[4/5] items-center justify-center overflow-hidden rounded-2xl border border-separator bg-surface">
-						<span className="text-7xl font-bold text-nova sm:text-8xl">MA</span>
+					<MonogramTile
+						className="aspect-[4/5]"
+						textClassName="text-7xl sm:text-8xl"
+					>
 						<DotGrid
 							rows={4}
 							cols={4}
 							className="absolute bottom-4 right-4 text-accent/30"
 						/>
-						<span className="absolute bottom-0 left-0 h-1 w-full bg-accent/60" />
-					</div>
+					</MonogramTile>
 
 					<span className="absolute -bottom-4 left-6 inline-flex items-center gap-2 border border-separator bg-background px-3 py-2 text-xs">
 						<span className="size-2.5 bg-nova" />

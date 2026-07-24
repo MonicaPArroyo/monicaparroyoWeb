@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { DotGrid } from '@/components/decorations';
 import { MapPinIcon } from '@/components/icons';
+import { MonogramTile } from '@/components/monogram-tile';
 import { Section } from '@/components/sections/section';
 
 export function About() {
@@ -23,15 +24,13 @@ export function About() {
 				{/* portrait placeholder framed with decorations */}
 				<div className="relative mx-auto w-full max-w-xs">
 					<DotGrid className="absolute -right-6 -top-6 -z-10 hidden text-nova/25 sm:block" />
-					<div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-2xl border border-separator bg-surface">
-						<span className="text-7xl font-bold text-nova">MA</span>
+					<MonogramTile className="aspect-square" textClassName="text-7xl">
 						<DotGrid
 							rows={4}
 							cols={4}
 							className="absolute left-4 top-4 text-accent/30"
 						/>
-						<span className="absolute bottom-0 left-0 h-1 w-full bg-accent/60" />
-					</div>
+					</MonogramTile>
 				</div>
 			</div>
 

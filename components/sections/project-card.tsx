@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 import { useTranslations } from 'next-intl';
-import { LinkButton } from '@/components/link-button';
+import { LinkButton, outlineButtonSmClass } from '@/components/link-button';
 import { Logo } from '@/components/logo';
 import { Link } from '@/i18n/navigation';
 import type { Project, ProjectLink } from '@/lib/data';
@@ -16,17 +16,17 @@ const linkVariant: Record<ProjectLink['type'], 'primary' | 'outline'> = {
 	blog: 'outline',
 };
 
-// Shared button chrome so the internal (locale-aware) blog Link matches LinkButton.
-const outlineBtn =
-	'inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-all border border-border text-foreground hover:border-accent hover:text-accent';
-
 function Actions({ project, t }: { project: Project; t: (k: string) => string }) {
 	if (project.links.length === 0) return null;
 	return (
 		<div className="mt-4 flex flex-wrap gap-2">
 			{project.links.map((link) =>
 				link.type === 'blog' ? (
-					<Link key={link.type} href={link.href} className={outlineBtn}>
+					<Link
+						key={link.type}
+						href={link.href}
+						className={outlineButtonSmClass}
+					>
 						{t(`links.${link.type}`)}
 					</Link>
 				) : (

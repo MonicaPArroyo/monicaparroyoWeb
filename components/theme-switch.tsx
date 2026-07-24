@@ -3,6 +3,7 @@
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import { MoonIcon, SunIcon } from '@/components/icons';
+import { iconButtonClass } from '@/components/ui';
 
 export function ThemeSwitch() {
 	const [mounted, setMounted] = useState(false);
@@ -20,7 +21,7 @@ export function ThemeSwitch() {
 			type="button"
 			onClick={() => setTheme(isDark ? 'light' : 'dark')}
 			aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
-			className="flex size-9 items-center justify-center rounded-lg text-foreground transition-colors hover:bg-default hover:text-accent"
+			className={iconButtonClass}
 		>
 			{isDark ? <SunIcon /> : <MoonIcon />}
 		</button>
