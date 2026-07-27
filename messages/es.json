@@ -144,5 +144,18 @@
 		"social": "Redes",
 		"support": "Invítame un café",
 		"rights": "Todos los derechos reservados."
+	},
+	"theme": {
+		"light": [
+			"¿¡Por qué hiciste eso!? ¡Mis ojoooos!",
+			"Modo linterna activado. ¿Todo bien en casa?",
+			"Tema claro... valiente. Que conste que lo intenté."
+		],
+		"dark": [
+			"Gracias. Mis retinas te lo agradecen.",
+			"Uf, así está mejor. Bienvenido de vuelta a la civilización.",
+			"Oscuridad restaurada. Tus ojos y yo respiramos."
+		],
+		"close": "Cerrar"
 	}
 }

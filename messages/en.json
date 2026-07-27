@@ -144,5 +144,18 @@
 		"social": "Social",
 		"support": "Buy me a coffee",
 		"rights": "All rights reserved."
+	},
+	"theme": {
+		"light": [
+			"Why would you do that?! My eyeees!",
+			"Flashlight mode on. Everything okay at home?",
+			"Light theme... bold. For the record, I tried to warn you."
+		],
+		"dark": [
+			"Thank you. My retinas appreciate it.",
+			"Phew, much better. Welcome back to civilization.",
+			"Darkness restored. Your eyes and I can breathe again."
+		],
+		"close": "Close"
 	}
 }

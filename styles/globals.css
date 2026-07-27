@@ -81,6 +81,16 @@
 	}
 }
 
+/* Draining progress bar for the theme-switch toast. */
+@keyframes toast-drain {
+	from {
+		transform: scaleX(1);
+	}
+	to {
+		transform: scaleX(0);
+	}
+}
+
 /* Discreet twinkle for the logo's nova star (navbar). */
 @keyframes nova-twinkle {
 	0%,
