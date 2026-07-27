@@ -29,6 +29,18 @@ export async function generateMetadata({
 			description: t('description'),
 			locale: locale === 'es' ? 'es_MX' : 'en_US',
 			type: 'website',
+			images: [
+				{
+					url: '/og.png',
+					width: 1006,
+					height: 600,
+					alt: 'Mónica P. Arroyo — Frontend Developer',
+				},
+			],
+		},
+		twitter: {
+			card: 'summary_large_image',
+			images: ['/og.png'],
 		},
 	};
 }
