@@ -1,0 +1,161 @@
+{
+	"metadata": {
+		"title": "Mónica P. Arroyo | Frontend Developer",
+		"description": "Frontend Developer specialized in Next.js, TypeScript, React and PHP/Laravel. Portfolio, projects and blog."
+	},
+	"nav": {
+		"home": "home",
+		"works": "works",
+		"experience": "experience",
+		"about": "about",
+		"contact": "contact",
+		"blog": "blog"
+	},
+	"hero": {
+		"greeting": "Hi, I'm",
+		"name": "Mónica P. Arroyo",
+		"roleLead": "Frontend Developer",
+		"roleTail": "Next.js · TypeScript · React · PHP/Laravel",
+		"desc": "I build modern, accessible interfaces, understanding the product end to end.",
+		"ctaContact": "Contact me",
+		"ctaWorks": "View projects",
+		"statusPrefix": "Currently at"
+	},
+	"projects": {
+		"heading": "works",
+		"subheading": "A selection of things I've built.",
+		"featured": "Featured",
+		"small": "Small & hobby projects",
+		"collab": "In collaboration with",
+		"links": {
+			"live": "Live",
+			"github": "GitHub",
+			"figma": "Figma",
+			"demo": "Demo",
+			"itch": "itch.io",
+			"cached": "Cached",
+			"tinkercad": "Tinkercad",
+			"blog": "Blog"
+		},
+		"items": {
+			"weddinghub": "A single RSVP app for weddings: guest management, confirmations and a countdown, with authentication and an admin dashboard.",
+			"astroletras": "Book catalog with search and global state.",
+			"crystalgems": "Steven Universe character catalog.",
+			"contactapp": "Full-stack contacts CRUD with form validation.",
+			"calaverita": "Arduino library: senses distance and moves a jaw with sound and lights.",
+			"decoder": "Combinational logic circuit that turns a binary (BCD) input into the pattern for a 7-segment display.",
+			"snowball": "Endless-runner published on itch.io.",
+			"flanes": "Browser game built with Phaser for 'Las flanes', my group of friends. A project close to my heart."
+		}
+	},
+	"experience": {
+		"heading": "experience",
+		"subheading": "Where I've built things.",
+		"now": "now",
+		"before": "Before dev — <b>STEAM educator</b>: I taught Arduino and robotics at <link>Instituto Francisco Possenti</link> (2019–2022).",
+		"items": {
+			"hirint": {
+				"period": "May 2024 — Present",
+				"duration": "2+ yrs",
+				"location": "Remote",
+				"summary": "I develop and scale the platform on a modern stack, after helping migrate the legacy architecture to Next.js and TypeScript.",
+				"highlights": [
+					"Designed and shipped the Valoraciones (assessments) feature end to end — from the data model and Laravel logic to the final UI.",
+					"I maintain 15+ evaluation report types (web and PDF) with reusable components; optimized SQL queries for bulk exports."
+				]
+			},
+			"yaganaste": {
+				"period": "Jan 2024 — May 2024",
+				"duration": "5 mo",
+				"location": "Mexico City",
+				"summary": "Revamped the UI with Next.js and TypeScript and helped split the frontend and backend."
+			},
+			"snowballcommunity": {
+				"period": "Mar 2023 — Dec 2023",
+				"duration": "10 mo",
+				"location": "Mexico City",
+				"summary": "Led development of a social network for entrepreneurs and investors, bilingual (ES/EN) from day one."
+			},
+			"snowballmx": {
+				"period": "Jan 2022 — Mar 2023",
+				"duration": "1 yr 3 mo",
+				"location": "Mexico City",
+				"summary": "Ongoing development and improvement of a fintech crowdfunding platform."
+			}
+		}
+	},
+	"skills": {
+		"heading": "skills",
+		"subheading": "My toolbox.",
+		"categories": {
+			"languages": "Languages",
+			"frameworks": "Frameworks",
+			"tools": "Tools",
+			"databases": "Databases",
+			"other": "Other"
+		}
+	},
+	"about": {
+		"heading": "about",
+		"subheading": "A bit about me.",
+		"p1": "Hi! I'm Mónica. A full-stack developer with 4+ years building modern web solutions. My strength is the React ecosystem —Next.js and TypeScript— but I move comfortably across the backend with Laravel, so I understand the product end to end.",
+		"p2": "I love turning manual processes into efficient digital tools. Before becoming a dev I was a STEAM educator, which gave me clear communication, teamwork and creative problem-solving. I always look to add value beyond the code.",
+		"funFactsTitle": "Fun facts",
+		"funFacts": [
+			"I love electronics and tinkering with Arduino 🔌",
+			"Former STEAM educator 👩‍🏫",
+			"I enjoy solving puzzles 🧩"
+		],
+		"location": "Puebla metro area, MX"
+	},
+	"contact": {
+		"heading": "contact",
+		"subheading": "Let's work together?",
+		"availability": "I'm open to freelance opportunities and collaborations. If you have a project in mind or just want to say hi, drop me a line.",
+		"directTitle": "You can also find me here",
+		"location": "Puebla metro area, MX",
+		"form": {
+			"name": "Name",
+			"namePlaceholder": "Your name",
+			"email": "Email",
+			"title": "Subject",
+			"titlePlaceholder": "What's it about?",
+			"message": "Message",
+			"messagePlaceholder": "Tell me...",
+			"send": "Send",
+			"sending": "Sending...",
+			"success": "Thanks! I'll get back to you soon.",
+			"error": "Something went wrong. Please try again.",
+			"invalidEmail": "Please enter a valid email."
+		}
+	},
+	"blog": {
+		"heading": "blog",
+		"subheading": "Notes, learnings and experiments.",
+		"empty": "No posts yet. Coming soon!",
+		"readMore": "Read more",
+		"publishedOn": "Published on",
+		"backToBlog": "Back to blog",
+		"breadcrumbHome": "home",
+		"breadcrumbBlog": "blog"
+	},
+	"footer": {
+		"tagline": "Turning lines of code into opportunities for the future ✨",
+		"social": "Social",
+		"support": "Buy me a coffee",
+		"rights": "All rights reserved."
+	},
+	"theme": {
+		"light": [
+			"Why would you do that?! My eyeees!",
+			"Flashlight mode on. Everything okay at home?",
+			"Light theme... bold. For the record, I tried to warn you."
+		],
+		"dark": [
+			"Thank you. My retinas appreciate it.",
+			"Phew, much better. Welcome back to civilization.",
+			"Darkness restored. Your eyes and I can breathe again."
+		],
+		"close": "Close"
+	}
+}

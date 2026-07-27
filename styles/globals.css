@@ -1,0 +1,112 @@
+/* Tailwind CSS v4 — must be first */
+@import "tailwindcss";
+/* HeroUI v3 styles — must come after Tailwind */
+@import "@heroui/styles";
+
+/* Enable class-based dark variant (next-themes sets class="dark") */
+@custom-variant dark (&:is(.dark *));
+
+/* `inline` is required when a theme value references another CSS variable
+   (next/font's --font-fira, and our custom tokens) so the utility emits var(...). */
+@theme inline {
+	/* Single typeface — Fira Code everywhere (matches the Figma). */
+	--font-sans: var(--font-fira), ui-monospace, "SF Mono", monospace;
+	--font-mono: var(--font-fira), ui-monospace, "SF Mono", monospace;
+	/* Custom brand tokens exposed as utilities (bg-nova, bg-accent-solid, …) */
+	--color-nova: var(--nova);
+	--color-nova-foreground: var(--nova-foreground);
+	--color-accent-solid: var(--accent-solid);
+	--color-accent-solid-foreground: var(--accent-solid-foreground);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Brand palette — "One Dark" (from Mónica's Figma).
+   OKLCH converted from the exact Figma hex, WCAG-AA validated.
+   Two blues: --accent (bright) for text/links/borders/focus;
+   --accent-solid (darker) only for solid button fills + white text.
+   ───────────────────────────────────────────────────────────── */
+:root,
+[data-theme="light"] {
+	/* One Light–inspired (proposed for the light theme) */
+	--background: oklch(0.9851 0 89.88); /* #FAFAFA */
+	--surface: oklch(1 0 0); /* #FFFFFF */
+	--surface-foreground: oklch(0.3496 0.0141 274.5); /* #383A42 */
+	--foreground: oklch(0.3496 0.0141 274.5); /* #383A42 */
+	--muted: oklch(0.5439 0.0153 262.34); /* #6B7079 */
+	--border: oklch(0.9215 0.0058 264.53); /* #E3E5E9 */
+	--separator: oklch(0.9215 0.0058 264.53);
+	--accent: oklch(0.5474 0.165 255.81); /* #1F6FCE */
+	--accent-foreground: oklch(1 0 0);
+	--accent-solid: oklch(0.5474 0.165 255.81); /* #1F6FCE (same; passes both) */
+	--accent-solid-foreground: oklch(1 0 0);
+	--success: oklch(0.6381 0.1419 143.46); /* #50A14F */
+	--success-foreground: oklch(1 0 0);
+	--warning: oklch(0.6584 0.138 76.2); /* #C18401 */
+	--warning-foreground: oklch(1 0 0);
+	--danger: oklch(0.6391 0.1792 28.34); /* #E45649 */
+	--danger-foreground: oklch(1 0 0);
+	--nova: oklch(0.6468 0.1299 82.21); /* #B5850F (deeper gold, visible on white) */
+	--nova-foreground: oklch(1 0 0);
+}
+
+.dark,
+[data-theme="dark"] {
+	/* One Dark — the primary theme (exact Figma colors) */
+	--background: oklch(0.2921 0.014 261.7); /* #282C33 */
+	--surface: oklch(0.3239 0.0174 262.25); /* #2F343D */
+	--surface-foreground: oklch(1 0 0); /* #FFFFFF */
+	--foreground: oklch(1 0 0); /* #FFFFFF (headings/emphasis) */
+	--muted: oklch(0.7621 0.0202 262.99); /* #ABB2BF (body/secondary) */
+	--border: oklch(0.3863 0.0235 265.69); /* #3E4451 */
+	--separator: oklch(0.3863 0.0235 265.69);
+	--accent: oklch(0.7286 0.1215 246.28); /* #62AEEF  bright blue */
+	--accent-foreground: oklch(0.2921 0.014 261.7); /* #282C33 */
+	--accent-solid: oklch(0.5622 0.147 255.48); /* #3175C9  button fills */
+	--accent-solid-foreground: oklch(1 0 0); /* white */
+	--success: oklch(0.7683 0.1103 133); /* #98C379 */
+	--success-foreground: oklch(0.2921 0.014 261.7);
+	--warning: oklch(0.8247 0.098 82.56); /* #E5C07A */
+	--warning-foreground: oklch(0.2921 0.014 261.7);
+	--danger: oklch(0.6692 0.1461 17.12); /* #E06B74 */
+	--danger-foreground: oklch(0.2921 0.014 261.7);
+	--nova: oklch(0.8247 0.098 82.56); /* #E5C07A  gold (minimal use) */
+	--nova-foreground: oklch(0.2921 0.014 261.7);
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+		/* offset anchor targets for the sticky navbar */
+		scroll-padding-top: 5rem;
+	}
+}
+
+/* Draining progress bar for the theme-switch toast. */
+@keyframes toast-drain {
+	from {
+		transform: scaleX(1);
+	}
+	to {
+		transform: scaleX(0);
+	}
+}
+
+/* Discreet twinkle for the logo's nova star (navbar). */
+@keyframes nova-twinkle {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.5;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	::before,
+	::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+	}
+}
