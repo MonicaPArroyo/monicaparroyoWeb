@@ -113,7 +113,7 @@ export function ProjectCard({
 						src={project.cover}
 						alt={project.name}
 						fill
-						sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+						sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 1024px) 50vw, 33vw"
 						className={clsx('object-cover', project.coverPosition)}
 					/>
 				) : (
